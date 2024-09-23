@@ -78,6 +78,7 @@ public class ProductController {
         product.setAmount(productDto.getAmount());
         product.setImageUrl(productDto.getImageUrl());
         product.setDescription(productDto.getDescription());
+        product.setIsPrimeSpecific(productDto.getIsPrimeSpecific());
         if(productDto.getCategory() != null) {
             Category category = new Category();
             category.setId(productDto.getCategory().getId());
@@ -94,6 +95,7 @@ public class ProductController {
         productDto.setDescription(product.getDescription());
         productDto.setAmount(product.getAmount());
         productDto.setImageUrl(product.getImageUrl());
+        productDto.setIsPrimeSpecific(product.getIsPrimeSpecific());
         if(product.getCategory() != null) {
             CategoryDto categoryDto = new CategoryDto();
             categoryDto.setName(product.getCategory().getName());

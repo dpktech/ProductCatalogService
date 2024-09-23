@@ -17,4 +17,7 @@ public class ProductDto {
     private Double amount;
 
     private CategoryDto category;
+
+    private Boolean isPrimeSpecific;
+
 }
