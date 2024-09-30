@@ -43,7 +43,7 @@ class ProductControllerTest {
         assertNotNull(response.getBody());
         assertEquals(productId,response.getBody().getId());
         assertEquals("Iphone16",response.getBody().getTitle());
-        assertEquals(HttpStatus.OK,response.getStatusCode());
+        assertEquals(200,response.getStatusCode().value());
     }
 
     @Test

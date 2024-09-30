@@ -43,11 +43,13 @@ public class ProductControllerMvcTest {
         productList.add(product);
         productList.add(product2);
 
+        String outputInString = objectMapper.writeValueAsString(productList);
+
         when(productService.getAllProducts())
                 .thenReturn(productList);
 
         mockMvc.perform(get("/products"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(objectMapper.writeValueAsString(productList)));
+                .andExpect(content().string(outputInString));
     }
 }
