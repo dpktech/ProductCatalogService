@@ -50,6 +50,7 @@ public class ProductController {
             else if(productId == 0) {
                 throw new RuntimeException("Invalid productId");
             }
+
             Product product = productService.getProductById(productId);
             if (product == null) return null;
             return new ResponseEntity<>(from(product), HttpStatus.OK);
