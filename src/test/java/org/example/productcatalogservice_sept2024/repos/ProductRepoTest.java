@@ -29,4 +29,19 @@ public class ProductRepoTest {
         System.out.println(desc);
     }
 
+    //@Test
+    public void saveProducts() {
+        Product product1 = new Product();
+        product1.setTitle("Iphone");
+        product1.setId(100L);
+        product1.setDescription("latest Iphone");
+        productRepo.save(product1);
+
+        Product product2 = new Product();
+        product2.setTitle("Macbook");
+        product2.setId(1021L);
+        product2.setDescription("latest mac");
+        productRepo.save(product2);
+    }
+
 }
