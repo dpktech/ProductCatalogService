@@ -26,6 +26,12 @@ public class ProductController {
 //        this.productService = productService;
 //    }
 
+    @GetMapping("/products/{productId}/{userId}")
+    public ProductDto getProductBasedOnUserRole(@PathVariable Long productId,@PathVariable Long userId) {
+      Product product = productService.getProductBasedOnUserRole(productId,userId);
+      return from(product);
+    }
+
     @GetMapping("/products")
     public List<ProductDto> getProducts() {
         List<Product> products = productService.getAllProducts();

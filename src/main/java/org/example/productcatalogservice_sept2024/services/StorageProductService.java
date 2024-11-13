@@ -1,20 +1,26 @@
 package org.example.productcatalogservice_sept2024.services;
 
+import org.example.productcatalogservice_sept2024.dtos.UserDto;
 import org.example.productcatalogservice_sept2024.models.Product;
 import org.example.productcatalogservice_sept2024.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service("sps")
-//@Primary
+@Primary
 public class StorageProductService implements IProductService {
 
     @Autowired
     private ProductRepo productRepo;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public List<Product> getAllProducts() {
@@ -28,6 +34,17 @@ public class StorageProductService implements IProductService {
 
         return null;
      }
+
+
+    public Product getProductBasedOnUserRole(Long productId, Long userId) {
+        Product product = productRepo.findById(productId).get();
+        UserDto userDto = restTemplate.getForEntity("http://userservice/users/{userId}", UserDto.class,userId).getBody();
+        if(userDto != null) {
+            return product;
+        }
+
+        return null;
+    }
 
     @Override
     public Product createProduct(Product product) {

@@ -12,4 +12,6 @@ public interface IProductService {
      Product createProduct(Product product);
 
     Product replaceProduct(Long id, Product product);
+
+    Product getProductBasedOnUserRole(Long productId, Long userId);
 }

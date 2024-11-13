@@ -24,7 +24,7 @@ import java.util.List;
 import static java.util.Objects.nonNull;
 
 @Service("fkps")
-@Primary
+//@Primary
 public class ProductService implements IProductService {
 
     @Autowired
@@ -47,6 +47,10 @@ public class ProductService implements IProductService {
        }
 
         return products;
+    }
+
+    public Product getProductBasedOnUserRole(Long productId, Long userId) {
+        return null;
     }
 
     public Product getProductById(Long id) {

@@ -8,9 +8,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepo extends JpaRepository<Product,Long> {
+
+    Optional<Product> findById(Long id);
 
     Page<Product> findProductByTitleEquals(String query, Pageable pageable);
 
